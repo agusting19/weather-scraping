@@ -24,32 +24,12 @@ WebDriverWait(driver, 3)\
     .until(EC.element_to_be_clickable((By.XPATH, '/html/body/main/span[2]/span/span/ul/li[3]/a')))\
     .click()
 
-column1 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[4]').text.split('\n')
+todays_weather = []
 
-column2 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[11]').text.split('\n')
-
-column3 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[18]').text.split('\n')
-
-column4 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[25]').text.split('\n')
-
-column5 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[32]').text.split('\n')
-
-column6 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[39]').text.split('\n')
-
-column7 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[46]').text.split('\n')
-
-column8 = driver.find_element(
-    By.XPATH, '/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[53]').text.split('\n')
-
-todays_weather = [column1, column2, column3,
-                  column4, column5, column6, column7, column8]
+for i in range(4, 53, 7):
+    column = driver.find_element(
+        By.XPATH, f'/html/body/span[2]/span[2]/span/span[2]/section/table/tbody/tr[{i}]').text.split('\n')
+    todays_weather.append(column)
 
 hours = list()
 temp = list()
